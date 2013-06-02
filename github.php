@@ -6,6 +6,8 @@
  */
 class githubPHP
 {
+	public $api_url='https://api.github.com/';
+
 	public function __construct($client_id, $client_secret, $access_token=NULL){
 		$this->client_id=$client_id;
 		$this->client_secret=$client_secret;
@@ -46,26 +48,24 @@ class githubPHP
 	//获取登录用户信息
 	public function me(){
 		$params=array();
-		$url='https://api.github.com/user';
-		return $this->api($url, $params);
+		return $this->api('user', $params);
 	}
 
 	//获取登录用户代码仓库
 	public function repos(){
 		$params=array();
-		$url='https://api.github.com/user/repos';
-		return $this->api($url, $params);
+		return $this->api('user/repos', $params);
 	}
 
 	//获取登录用户代码片段
 	public function gists(){
 		$params=array();
-		$url='https://api.github.com/gists';
-		return $this->api($url, $params);
+		return $this->api('gists', $params);
 	}
 
 	//调用接口
-	public function api($url, $params, $method='GET'){
+	public function api($url, $params=array(), $method='GET'){
+		$url=$this->api_url.$url;
 		$params['access_token']=$this->access_token;
 		if($method=='GET'){
 			$result_str=$this->http($url.'?'.http_build_query($params));
@@ -88,7 +88,7 @@ class githubPHP
 			curl_setopt($ci, CURLOPT_POST, TRUE);
 			if($postfields!='')curl_setopt($ci, CURLOPT_POSTFIELDS, $postfields);
 		}
-		$headers[]='User-Agent: githubPHP(piscdong.com)';
+		$headers[]='User-Agent: GitHub.PHP(piscdong.com)';
 		curl_setopt($ci, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ci, CURLOPT_URL, $url);
 		$response=curl_exec($ci);
