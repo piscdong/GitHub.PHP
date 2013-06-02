@@ -1,4 +1,4 @@
-github_PHP
+GitHub.PHP
 -------------
 >GitHub API client for PHP
 
