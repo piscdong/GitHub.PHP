@@ -64,6 +64,10 @@ class githubPHP
 	}
 
 	//调用接口
+	/**
+	//示例：获取登录用户的issues
+	$result=$github->api('user/issues', array(), 'GET');
+	**/
 	public function api($url, $params=array(), $method='GET'){
 		$url=$this->api_url.$url;
 		$params['access_token']=$this->access_token;
