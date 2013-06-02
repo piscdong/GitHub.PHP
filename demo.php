@@ -25,6 +25,13 @@ if($github_t!=''){
 	var_dump($result);
 	**/
 
+	/**
+	//其他功能请根据官方文档自行添加
+	//示例：获取登录用户的issues
+	$result=$github->api('user/issues', array(), 'GET');
+	var_dump($result);
+	**/
+
 }else{
 	//生成登录链接
 	$github=new githubPHP($github_k, $github_s);
