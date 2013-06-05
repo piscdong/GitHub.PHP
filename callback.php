@@ -18,4 +18,3 @@ if(isset($result['access_token']) && $result['access_token']!=''){
 	echo '授权失败';
 }
 echo '<br/><a href="demo.php">返回</a>';
-?>

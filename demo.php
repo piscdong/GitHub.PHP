@@ -38,4 +38,3 @@ if($github_t!=''){
 	$login_url=$github->login_url($callback_url);
 	echo '<a href="',$login_url,'">点击进入授权页面</a>';
 }
-?>
